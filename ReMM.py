@@ -124,9 +124,13 @@ if NEXT_CRON_TIME < time.time():
     
     # LOOP playlists in config
     for sp in CLIENT_DATA['playlists'][i]['playlists']:
+      # GET items in playlist
       playlist_query = youtube.playlistItems().list(
         part="snippet",
-        playlistId=sp
+        playlistId=sp,
+        pageInfo = {
+          "totalResults" : 5
+        }
       ).execute()
       # LOOP videos in YouTube playlist
       for pq in playlist_query['items']:

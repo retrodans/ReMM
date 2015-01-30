@@ -5,11 +5,19 @@
 
 ## Phase 2
 * Get it running on my server on cron
-* Delete the git history as much as possible (probably start a new repo tbh)
-* Finally commit to GitHub
+
+## Phase 3
+* Look at code improvements and housekeeping
+* Get it creating folder in tmp directory as/when required
 
 ## Phase 4
-* Look at code improvements and housekeeping
+* Learn if/how to put a nice frontend on this (using node?)
+** Login that connects a google account to a user
+** Manage their authentication through oAuth
+** Management of the client_config.json file
+*** Add/Remove ReMM playlists
+*** Add subplaylists to each playlist using their URL
+** Create a new user, with json files
 
 ## Phase 5
 * Architect a UX for this to act on a freemium SaaS model
@@ -24,9 +32,10 @@
 
 # Requirements
 * python v2.7+
-* pip install python-dateutil
+* sudo pip install python-dateutil httplib2 apiclient urllib3 discovery google-api-python-client oauth2client python-gflags
 
 # How to run
+python ReMM.py --noauth_local_webserver
 
 # Setup on a new machine
 
