@@ -12,20 +12,20 @@
 
 ## Phase 4
 * Learn if/how to put a nice frontend on this (using node?)
-** Login that connects a google account to a user
-** Manage their authentication through oAuth
-** Management of the client_config.json file
-*** Add/Remove ReMM playlists
-*** Add subplaylists to each playlist using their URL
-** Create a new user, with json files
+  * Login that connects a google account to a user
+  * Manage their authentication through oAuth
+  * Management of the client_config.json file
+    * Add/Remove ReMM playlists
+    * Add subplaylists to each playlist using their URL
+  * Create a new user, with json files
 
 ## Phase 5
 * Architect a UX for this to act on a freemium SaaS model
-** Limit targets?
-** Limit sources per target group?
-** Work out how to add items to settings file using the UX (but securely)
-** Consider performance of files being read (SQLite instead?)
-** Add in collection capabilities aswell
+  * Limit targets?
+  * Limit sources per target group?
+  * Work out how to add items to settings file using the UX (but securely)
+  * Consider performance of files being read (SQLite instead?)
+  * Add in collection capabilities aswell
 
 # References
 * https://developers.google.com/youtube/v3/docs
