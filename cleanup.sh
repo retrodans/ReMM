@@ -1,0 +1,1 @@
+rm client_dyn_data.json

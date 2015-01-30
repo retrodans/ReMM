@@ -1,0 +1,10 @@
+{
+  "playlists": {
+  	"xxx_xxx_xxx": {
+      "title": "xxx xxx xxx",
+      "description": "xxxxxxxx",
+      "privacyStatus": "private",
+      "playlists": ["xxxxxx"]
+    }
+  }
+}
