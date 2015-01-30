@@ -15,7 +15,7 @@ from oauth2client.file import Storage
 from oauth2client.tools import argparser, run_flow
 
 # Setup some variables
-LOGNAME = "client_dyn_data.json"
+LOGNAME = "/tmp/ReMM/client_dyn_data.json"
 videos_per_fetch = 10
 
 # Open a new log file
@@ -69,7 +69,7 @@ if NEXT_CRON_TIME < time.time():
     scope=YOUTUBE_READ_WRITE_SCOPE)
 
   # Save the oAuth settings in a config file locally
-  storage = Storage("%s-oauth2.json" % sys.argv[0])
+  storage = Storage("/tmp/ReMM/%s-oauth2.json" % sys.argv[0])
   credentials = storage.get()
 
   # If oAuth failes
