@@ -7,6 +7,9 @@ import json
 import time
 import calendar
 import dateutil.parser
+import logging
+import iso8601
+import datetime
 
 from apiclient.discovery import build
 from apiclient.errors import HttpError
@@ -15,8 +18,16 @@ from oauth2client.file import Storage
 from oauth2client.tools import argparser, run_flow
 
 # Setup some variables
-LOGNAME = "/tmp/ReMM/client_dyn_data.json"
+script_path = os.path.dirname(os.path.realpath(__file__));
+LOGNAME = script_path + "/client_dyn_data.json"
 videos_per_fetch = 10
+username = "retrodans"
+error = 0
+ERRORLOGNAME = script_path + '/ReMM.log'
+
+# Would be good to get username in the format somehow
+# tried this, but didn't work; $(username)s
+logging.basicConfig(format='%(asctime)s - %(message)s',filename=ERRORLOGNAME,level=logging.INFO)
 
 # Open a new log file
 try:
@@ -30,7 +41,7 @@ try:
     DYN_DATA.close()
 except IOError:
   # File doesn't exist, so generate one
-  LAST_CRON_TIME = time.time()
+  LAST_CRON_TIME = time.time() # Time in seconds since epoch
   DYN_DATA_TEXT = {                   
     'success_time': time.time()
   }
@@ -42,6 +53,7 @@ except IOError:
 increment = 3600
 NEXT_CRON_TIME = LAST_CRON_TIME + increment
 if NEXT_CRON_TIME < time.time():
+  logging.info('ReMM script running')
   
   # The CLIENT_SECRETS_FILE variable specifies the name of a file that contains
   # the OAuth 2.0 information for this application, including its client_id and
@@ -53,7 +65,7 @@ if NEXT_CRON_TIME < time.time():
   #   https://developers.google.com/youtube/v3/guides/authentication
   # For more information about the client_secrets.json file format, see:
   #   https://developers.google.com/api-client-library/python/guide/aaa_client_secrets
-  CLIENT_SECRETS_FILE = "client_secrets.json"
+  CLIENT_SECRETS_FILE = script_path + "/client_secrets.json"
 
   # This variable defines a message to display if the CLIENT_SECRETS_FILE is missing.
   MISSING_CLIENT_SECRETS_MESSAGE = """Invalid client_secrests file %s""" % os.path.abspath(os.path.join(os.path.dirname(__file__), CLIENT_SECRETS_FILE))
@@ -69,7 +81,7 @@ if NEXT_CRON_TIME < time.time():
     scope=YOUTUBE_READ_WRITE_SCOPE)
 
   # Save the oAuth settings in a config file locally
-  storage = Storage("/tmp/ReMM/%s-oauth2.json" % sys.argv[0])
+  storage = Storage("%s-oauth2.json" % sys.argv[0])
   credentials = storage.get()
 
   # If oAuth failes
@@ -82,7 +94,7 @@ if NEXT_CRON_TIME < time.time():
     http=credentials.authorize(httplib2.Http()))
 
   # Load the users configuration (eg. playlists)
-  json_data2=open('client_config.json')
+  json_data2=open(script_path + '/client_config.json')
   CLIENT_DATA = json.load(json_data2)
   json_data2.close()
 
@@ -97,7 +109,13 @@ if NEXT_CRON_TIME < time.time():
 
   # LOOP config playlists
   for i in CLIENT_DATA['playlists']:
+    # For error handling purposes, we will add an error here, but then remove later
+    error += 1
+
     exists = 0
+
+    logging.info("NEXT DESTINATION PLAYLIST ID: %s", CLIENT_DATA['playlists'][i]['title'])
+
     # LOOP playlists from YouTube for this user
     # does playlist already exist?
     for p in playlists['items']:
@@ -121,24 +139,32 @@ if NEXT_CRON_TIME < time.time():
         )
       ).execute()
       PID = playlists_insert_response["id"]
-    
+
     # LOOP playlists in config
     for sp in CLIENT_DATA['playlists'][i]['playlists']:
+      logging.info("NEXT SOURCE PLAYLIST ID: %s", sp)
       # GET items in playlist
       playlist_query = youtube.playlistItems().list(
         part="snippet",
         playlistId=sp,
-        pageInfo = {
-          "totalResults" : 5
-        }
+        maxResults=5
       ).execute()
       # LOOP videos in YouTube playlist
       for pq in playlist_query['items']:
+        #print type(pq['snippet']['publishedAt'])
+
         # If the videos publishedAt date is more recent than the last cron run, then add it
-        publishedAtTimestamp = dateutil.parser.parse(pq['snippet']['publishedAt']).toordinal()
+        #publishedAtTimestamp = dateutil.parser.parse(pq['snippet']['publishedAt']).toordinal()
+        #print type(publishedAtTimestamp)
+
+        publishedAtTimestamp = iso8601.parse_date(pq['snippet']['publishedAt']).strftime('%s')
+        type(publishedAtTimestamp)
+        publishedAtTimestamp = int(publishedAtTimestamp)
+        type(publishedAtTimestamp)
 
         # Add video to playlist if new since cron
         if publishedAtTimestamp > LAST_CRON_TIME:
+          logging.info("%s is a new video (%i > %i)", pq['snippet']['title'], publishedAtTimestamp, LAST_CRON_TIME)
           playlist_query = youtube.playlistItems().insert(
             part = "snippet",
             body = {
@@ -152,10 +178,13 @@ if NEXT_CRON_TIME < time.time():
             }
           ).execute()
         else:
-          print pq['snippet']['title'] + " is not a new video"
+          logging.info("%s %s is not a new video (%i < %i)", sp, pq['snippet']['title'], publishedAtTimestamp, LAST_CRON_TIME)
+    # Decrease the error handling number by 1
+    error -= 1
 
-  DYN_DATA = open(LOGNAME, "w")
-  json.dump(DYN_DATA_TEXT, DYN_DATA, indent=4)
-  DYN_DATA.close()
+  if error == 0:
+    DYN_DATA = open(LOGNAME, "w")
+    json.dump(DYN_DATA_TEXT, DYN_DATA, indent=4)
+    DYN_DATA.close()
 else:
-  print "Don't run the cron yet"
+  logging.info('ReMM not due to run yet')

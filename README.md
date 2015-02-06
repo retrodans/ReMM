@@ -27,12 +27,17 @@
   * Consider performance of files being read (SQLite instead?)
   * Add in collection capabilities aswell
 
+## Extras
+* Cleanup of 'watched' videos from certain playlists
+* Only keep one video from each source in a playlist
+
 # References
 * https://developers.google.com/youtube/v3/docs
 
 # Requirements
 * python v2.7+
 * sudo pip install python-dateutil httplib2 apiclient urllib3 discovery google-api-python-client oauth2client python-gflags
+* sudo apt-get install python-lxml
 
 # How to run
 python ReMM.py --noauth_local_webserver
