@@ -163,7 +163,7 @@ if NEXT_CRON_TIME < time.time():
         type(publishedAtTimestamp)
 
         # Add video to playlist if new since cron
-        if publishedAtTimestamp > LAST_CRON_TIME:
+        if publishedAtTimestamp > LAST_CRON_TIME and pq['snippet']['title'] != "Deleted video":
           logging.info("%s is a new video (%i > %i)", pq['snippet']['title'], publishedAtTimestamp, LAST_CRON_TIME)
           playlist_query = youtube.playlistItems().insert(
             part = "snippet",
@@ -176,9 +176,11 @@ if NEXT_CRON_TIME < time.time():
                 }
               }
             }
-          ).execute()
+          )
+          logging.info(playlist_query)
+          playlist_query.execute()
         else:
-          logging.info("%s %s is not a new video (%i < %i)", sp, pq['snippet']['title'], publishedAtTimestamp, LAST_CRON_TIME)
+          logging.info("%s %s is not a new video OR is a deleted video (%i < %i)", sp, pq['snippet']['title'], publishedAtTimestamp, LAST_CRON_TIME)
     # Decrease the error handling number by 1
     error -= 1
 
