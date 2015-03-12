@@ -44,6 +44,10 @@ python ReMM.py --noauth_local_webserver
 
 # Setup on a new machine
 
+
 # Debugging
 ## Cron
 grep CRON /var/log/syslog
+## Seems to not be updating the client_dyn_data.json file
+* Cron should run as sudo
+* Set permissions on dyn_data to 664
