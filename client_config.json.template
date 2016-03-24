@@ -4,37 +4,25 @@
       "title": "ReMM Dans Episodes",
       "description": "Episodes Dan watches",
       "privacyStatus": "private",
-      "playlists": ["PLibNZv5Zd0dzqMz4Xz0UiheG8VSiz2Z4M","PLYq7H1T5SzMc2YVDZoN1twpNgJfMYZy81","PLl4T6p7km9daH5UOSRQknuVfmYJZ6mnkT","PL7atuZxmT954wz47aofSlvu0zbD4YuPOF","PLIEIzxlknp8ozNEJ4bYD4lYt4skpfqFmh","PL3764A3CF482DA559","PL7atuZxmT954utdT7saT0OSB5WhwLmyqf","PL7atuZxmT955yE91jpq4TGzmf5ZrqVhTG","PLl4T6p7km9dYgiJmHnOGhXsAUxci6JaEw","LLaBf1a-dpIsw8OxqH4ki2Kg"]
+      "playlists": ["PL3764A3CF482DA559","PLl4T6p7km9dYgiJmHnOGhXsAUxci6JaEw","PL7atuZxmT954UvydqNVClXAH3GRT0pAp2","PL7atuZxmT954bCkC062rKwXTvJtcqFB8i"]
     },
     "remm_the_dukes_episodes": {
       "title": "ReMM The Dukes Episodes",
       "description": "Episodes Shiv and Dan watch",
       "privacyStatus": "private",
-      "playlists": ["PL7atuZxmT95508O3ylmNMe_DOG6ksPdFn","PL3B8939169E1256C0","PLmKbqjSZR8TZa7wyVoVq2XMHxxWREyiFc","PLmqOBH9eWS9G1iSf6YchLOFlVrXAj8ZUk","PLimhOT0Avg-Tn_GnqJ94tDhr0RdoRBOLC","PLAB7FEBFF8A678ECF","PLEC5AE8C44EEACE4D","PL528BBD74ED64C7EC","PLimhOT0Avg-Q1zzIFxw0DOcBmDcat4bnK","PLimhOT0Avg-R-PrHjrMvwriny4OyOsxhK"]
+      "playlists": ["PL7atuZxmT95508O3ylmNMe_DOG6ksPdFn","PLmqOBH9eWS9G1iSf6YchLOFlVrXAj8ZUk","PLimhOT0Avg-Tn_GnqJ94tDhr0RdoRBOLC","PLAB7FEBFF8A678ECF","PLEC5AE8C44EEACE4D","PL528BBD74ED64C7EC","PLimhOT0Avg-Q1zzIFxw0DOcBmDcat4bnK","PLimhOT0Avg-R-PrHjrMvwriny4OyOsxhK","PL7atuZxmT954r3cfuPyKYZ2nLFv_5rw3x"]
     },
     "remm_quite_interesting": {
       "title": "ReMM Quite Interesting videos",
       "description": "Episodes which broaden the mind",
       "privacyStatus": "private",
-      "playlists": ["PLvFsG9gYFxY9PskPZccLwy2IvMsphpEkq","PLl4T6p7km9da1BKEAGzloOQqDVw3ZB7SF","PLDVUo0d8uHhfotYetkjTu5gCA92ypDEto","PL7atuZxmT956Z9tsEh0zCzS_xGd0eJf3s"]
+      "playlists": ["PLvFsG9gYFxY9PskPZccLwy2IvMsphpEkq","PLl4T6p7km9da1BKEAGzloOQqDVw3ZB7SF","PLDVUo0d8uHhfotYetkjTu5gCA92ypDEto","PLsNB4peY6C6KhUZiP_YogoCH4gsMccbXN"]
     },
     "remm_news": {
       "title": "ReMM News",
       "description": "News pieces",
       "privacyStatus": "private",
       "playlists": ["PLl4T6p7km9dbQojQLEz4N7nUPf8ER9rwr"]
-    },
-    "remm_sport": {
-      "title": "ReMM Sport",
-      "description": "New sport episodes",
-      "privacyStatus": "private",
-      "playlists": ["PLitJO4Sdx2jupw64eYgR0VUTPMh58aJZq"]
-    },
-    "remm_trailers": {
-      "title": "ReMM Trailers",
-      "description": "Some cool trailers and ads",
-      "privacyStatus": "private",
-      "playlists": ["PL6Cl4b54bkkZ6CE7rG1O8ZzZHh7mPrOVf"]
     }
   }
 }
