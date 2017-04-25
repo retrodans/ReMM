@@ -16,13 +16,19 @@
       "title": "ReMM Quite Interesting videos",
       "description": "Episodes which broaden the mind",
       "privacyStatus": "private",
-      "playlists": ["PLl4T6p7km9dZSdTfPxucpwZY7Try86hFW"]
+      "playlists": ["PLl4T6p7km9dZSdTfPxucpwZY7Try86hFW", "PLsNB4peY6C6IP9cbYalz5nyoYXyymdplf"]
     },
     "remm_news": {
       "title": "ReMM News",
       "description": "News pieces",
       "privacyStatus": "private",
       "playlists": ["PLl4T6p7km9dbQojQLEz4N7nUPf8ER9rwr"]
+    },
+    "remm_trailers": {
+      "title": "ReMM Trailers",
+      "description": "Film trailers",
+      "privacyStatus": "private",
+      "playlists": ["PL3bNgX5zYroO09aH3dxN7NjGKSG8ajJ3d", "PL3bNgX5zYroOlyb3CPJ9cA6xc7Ia1O5mf"]
     }
   }
 }
