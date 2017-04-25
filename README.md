@@ -1,3 +1,11 @@
+# FIND A BETTER WAY TO CHECK FOR LAST ADDED VIDEO
+* I think that loading the most recently added video and checking its timestamp would work
+* Maybe create seperate scripts
+** Create playlist
+** Update videos
+Need something a lot better than this
+
+
 # ToDo
 
 ## Phase 1
@@ -45,7 +53,7 @@ python ReMM.py --noauth_local_webserver
 # Setup on a new machine
 
 
-# Debugging
+# Troubleshooting
 ## Cron
 grep CRON /var/log/syslog
 ## Seems to not be updating the client_dyn_data.json file

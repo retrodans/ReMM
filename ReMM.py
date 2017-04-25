@@ -18,7 +18,7 @@ from oauth2client.file import Storage
 from oauth2client.tools import argparser, run_flow
 
 # Setup some variables
-script_path = os.path.dirname(os.path.realpath(__file__));
+script_path = os.path.dirname(os.path.realpath(__file__))
 LOGNAME = script_path + "/client_dyn_data.json"
 videos_per_fetch = 10
 username = "retrodans"
@@ -53,7 +53,7 @@ except IOError:
 increment = 3600
 NEXT_CRON_TIME = LAST_CRON_TIME + increment
 if NEXT_CRON_TIME < time.time():
-  logging.info('Last cron time was at %s', LAST_CRON_TIME)
+  logging.info('#1 Last cron time was at %s', LAST_CRON_TIME)
   
   # The CLIENT_SECRETS_FILE variable specifies the name of a file that contains
   # the OAuth 2.0 information for this application, including its client_id and
@@ -84,7 +84,7 @@ if NEXT_CRON_TIME < time.time():
   storage = Storage("%s-oauth2.json" % sys.argv[0])
   credentials = storage.get()
 
-  # If oAuth failes
+  # If oAuth fails
   if credentials is None or credentials.invalid:
     flags = argparser.parse_args()
     credentials = run_flow(flow, storage, flags)
@@ -110,7 +110,7 @@ if NEXT_CRON_TIME < time.time():
   # LOOP config playlists
   for i in CLIENT_DATA['playlists']:
     # For error handling purposes, we will add an error here, but then remove later
-    error += 1
+    error = 1
 
     exists = 0
 
@@ -155,7 +155,7 @@ if NEXT_CRON_TIME < time.time():
 
         # Add video to playlist if new since cron
         if publishedAtTimestamp > LAST_CRON_TIME and pq['snippet']['title'] != "Deleted video":
-          logging.info("%s is a new video (%i > %i)", pq['snippet']['title'], publishedAtTimestamp, LAST_CRON_TIME)
+          logging.info("#2 %s is a new video (%i > %i)", pq['snippet']['title'], publishedAtTimestamp, LAST_CRON_TIME)
           playlist_query = youtube.playlistItems().insert(
             part = "snippet",
             body = {
@@ -170,9 +170,10 @@ if NEXT_CRON_TIME < time.time():
           )
           playlist_query.execute()
     # Decrease the error handling number by 1
-    error -= 1
+    error = 0
 
   if error == 0:
+    logging.info("#3 Saving our new timestamp to the log %i", LAST_CRON_TIME)
     DYN_DATA = open(LOGNAME, "w")
     json.dump(DYN_DATA_TEXT, DYN_DATA, indent=4)
     DYN_DATA.close()
