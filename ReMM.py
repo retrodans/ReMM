@@ -177,3 +177,6 @@ if NEXT_CRON_TIME < time.time():
     DYN_DATA = open(LOGNAME, "w")
     json.dump(DYN_DATA_TEXT, DYN_DATA, indent=4)
     DYN_DATA.close()
+
+else:
+  logging.info('#4 We attempted to run the application again, but or one our block helped to prevent this at %s', time.time())
