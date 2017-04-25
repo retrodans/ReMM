@@ -4,25 +4,25 @@
       "title": "ReMM Dans Episodes",
       "description": "Episodes Dan watches",
       "privacyStatus": "private",
-      "playlists": ["PL3764A3CF482DA559","PLl4T6p7km9dYgiJmHnOGhXsAUxci6JaEw","PL7atuZxmT954UvydqNVClXAH3GRT0pAp2","PL7atuZxmT954bCkC062rKwXTvJtcqFB8i"]
+      "playlists": ["PLl4T6p7km9dYgiJmHnOGhXsAUxci6JaEw"]
     },
     "remm_the_dukes_episodes": {
       "title": "ReMM The Dukes Episodes",
       "description": "Episodes Shiv and Dan watch",
       "privacyStatus": "private",
-      "playlists": ["PL7atuZxmT95508O3ylmNMe_DOG6ksPdFn","PLmqOBH9eWS9G1iSf6YchLOFlVrXAj8ZUk","PLimhOT0Avg-Tn_GnqJ94tDhr0RdoRBOLC","PLAB7FEBFF8A678ECF","PLEC5AE8C44EEACE4D","PL528BBD74ED64C7EC","PLimhOT0Avg-Q1zzIFxw0DOcBmDcat4bnK","PLimhOT0Avg-R-PrHjrMvwriny4OyOsxhK","PL7atuZxmT954r3cfuPyKYZ2nLFv_5rw3x","PLl4T6p7km9da4F-2qnjaXnSGLVTF5cdmu","PL3B8939169E1256C0"]
+      "playlists": ["PL3B8939169E1256C0"]
     },
     "remm_quite_interesting": {
       "title": "ReMM Quite Interesting videos",
       "description": "Episodes which broaden the mind",
       "privacyStatus": "private",
-      "playlists": ["PLl4T6p7km9da1BKEAGzloOQqDVw3ZB7SF","PLDVUo0d8uHhfotYetkjTu5gCA92ypDEto"]
+      "playlists": ["PLl4T6p7km9dZSdTfPxucpwZY7Try86hFW"]
     },
     "remm_news": {
       "title": "ReMM News",
       "description": "News pieces",
       "privacyStatus": "private",
-      "playlists": ["PLm1wzeUdYWiYbSO6yFrp97_rzMtQrWNgu"]
+      "playlists": ["PLl4T6p7km9dbQojQLEz4N7nUPf8ER9rwr"]
     }
   }
 }
